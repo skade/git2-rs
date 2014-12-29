@@ -118,3 +118,5 @@ impl Drop for Error {
         unsafe { libc::free(self.raw.message as *mut libc::c_void) }
     }
 }
+
+unsafe impl Send for Error {}

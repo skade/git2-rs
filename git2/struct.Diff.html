@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Diff` struct in crate `git2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Diff">
+
+    <title>git2::Diff - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>git2</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='build/index.html'>build</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Blob.html'>Blob</a><a class='struct ' href='struct.Branch.html'>Branch</a><a class='struct ' href='struct.Branches.html'>Branches</a><a class='struct ' href='struct.Buf.html'>Buf</a><a class='struct ' href='struct.Commit.html'>Commit</a><a class='struct ' href='struct.Config.html'>Config</a><a class='struct ' href='struct.ConfigEntries.html'>ConfigEntries</a><a class='struct ' href='struct.ConfigEntry.html'>ConfigEntry</a><a class='struct ' href='struct.Cred.html'>Cred</a><a class='struct ' href='struct.CredentialHelper.html'>CredentialHelper</a><a class='struct ' href='struct.CredentialType.html'>CredentialType</a><a class='struct ' href='struct.Deltas.html'>Deltas</a><a class='struct current' href='struct.Diff.html'>Diff</a><a class='struct ' href='struct.DiffDelta.html'>DiffDelta</a><a class='struct ' href='struct.DiffFile.html'>DiffFile</a><a class='struct ' href='struct.DiffHunk.html'>DiffHunk</a><a class='struct ' href='struct.DiffLine.html'>DiffLine</a><a class='struct ' href='struct.DiffOptions.html'>DiffOptions</a><a class='struct ' href='struct.DiffStats.html'>DiffStats</a><a class='struct ' href='struct.Error.html'>Error</a><a class='struct ' href='struct.Index.html'>Index</a><a class='struct ' href='struct.IndexAddOption.html'>IndexAddOption</a><a class='struct ' href='struct.IndexEntries.html'>IndexEntries</a><a class='struct ' href='struct.IndexEntry.html'>IndexEntry</a><a class='struct ' href='struct.IndexTime.html'>IndexTime</a><a class='struct ' href='struct.Note.html'>Note</a><a class='struct ' href='struct.Notes.html'>Notes</a><a class='struct ' href='struct.Object.html'>Object</a><a class='struct ' href='struct.Oid.html'>Oid</a><a class='struct ' href='struct.Parents.html'>Parents</a><a class='struct ' href='struct.Pathspec.html'>Pathspec</a><a class='struct ' href='struct.PathspecDiffEntries.html'>PathspecDiffEntries</a><a class='struct ' href='struct.PathspecEntries.html'>PathspecEntries</a><a class='struct ' href='struct.PathspecFailedEntries.html'>PathspecFailedEntries</a><a class='struct ' href='struct.PathspecFlags.html'>PathspecFlags</a><a class='struct ' href='struct.PathspecMatchList.html'>PathspecMatchList</a><a class='struct ' href='struct.Progress.html'>Progress</a><a class='struct ' href='struct.Push.html'>Push</a><a class='struct ' href='struct.PushStatus.html'>PushStatus</a><a class='struct ' href='struct.Reference.html'>Reference</a><a class='struct ' href='struct.ReferenceNames.html'>ReferenceNames</a><a class='struct ' href='struct.References.html'>References</a><a class='struct ' href='struct.Refspec.html'>Refspec</a><a class='struct ' href='struct.Refspecs.html'>Refspecs</a><a class='struct ' href='struct.Remote.html'>Remote</a><a class='struct ' href='struct.RemoteCallbacks.html'>RemoteCallbacks</a><a class='struct ' href='struct.RemoteHead.html'>RemoteHead</a><a class='struct ' href='struct.Repository.html'>Repository</a><a class='struct ' href='struct.RepositoryInitMode.html'>RepositoryInitMode</a><a class='struct ' href='struct.RepositoryInitOptions.html'>RepositoryInitOptions</a><a class='struct ' href='struct.RevparseMode.html'>RevparseMode</a><a class='struct ' href='struct.Revspec.html'>Revspec</a><a class='struct ' href='struct.Revwalk.html'>Revwalk</a><a class='struct ' href='struct.Signature.html'>Signature</a><a class='struct ' href='struct.Sort.html'>Sort</a><a class='struct ' href='struct.Status.html'>Status</a><a class='struct ' href='struct.StatusEntry.html'>StatusEntry</a><a class='struct ' href='struct.StatusIter.html'>StatusIter</a><a class='struct ' href='struct.StatusOptions.html'>StatusOptions</a><a class='struct ' href='struct.Statuses.html'>Statuses</a><a class='struct ' href='struct.StringArray.html'>StringArray</a><a class='struct ' href='struct.StringArrayBytes.html'>StringArrayBytes</a><a class='struct ' href='struct.StringArrayItems.html'>StringArrayItems</a><a class='struct ' href='struct.Submodule.html'>Submodule</a><a class='struct ' href='struct.SubmoduleStatus.html'>SubmoduleStatus</a><a class='struct ' href='struct.Tag.html'>Tag</a><a class='struct ' href='struct.Time.html'>Time</a><a class='struct ' href='struct.Tree.html'>Tree</a><a class='struct ' href='struct.TreeEntry.html'>TreeEntry</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='enum.BranchType.html'>BranchType</a><a class='enum ' href='enum.ConfigLevel.html'>ConfigLevel</a><a class='enum ' href='enum.Delta.html'>Delta</a><a class='enum ' href='enum.DiffFormat.html'>DiffFormat</a><a class='enum ' href='enum.Direction.html'>Direction</a><a class='enum ' href='enum.ErrorCode.html'>ErrorCode</a><a class='enum ' href='enum.ObjectType.html'>ObjectType</a><a class='enum ' href='enum.RepositoryState.html'>RepositoryState</a><a class='enum ' href='enum.ResetType.html'>ResetType</a><a class='enum ' href='enum.StatusShow.html'>StatusShow</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>git2</a>::<wbr><a class='struct' href=''>Diff</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-13557' href='../src/git2/diff.rs.html#14-18'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Diff {
+    // some fields omitted
+}</pre><div class='docblock'><p>The diff object that contains all individual file deltas.</p>
+
+<p>This is an opaque structure which will be allocated by one of the diff
+generator functions below (such as <code>Diff::tree_to_tree</code>).</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a></code></h3><div class='impl-items'><h4 id='method.tree_to_tree' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.tree_to_tree' class='fnname'>tree_to_tree</a>(repo: &amp;<a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, old_tree: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../git2/struct.Tree.html' title='git2::Tree'>Tree</a>&gt;, new_tree: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../git2/struct.Tree.html' title='git2::Tree'>Tree</a>&gt;, opts: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;mut <a class='struct' href='../git2/struct.DiffOptions.html' title='git2::DiffOptions'>DiffOptions</a>&gt;) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Create a diff with the difference between two tree objects.</p>
+
+<p>This is equivalent to <code>git diff &lt;old-tree&gt; &lt;new-tree&gt;</code></p>
+
+<p>The first tree will be used for the &quot;old_file&quot; side of the delta and the
+second tree will be used for the &quot;new_file&quot; side of the delta.  You can
+pass <code>None</code> to indicate an empty tree, although it is an error to pass
+<code>None</code> for both the <code>old_tree</code> and <code>new_tree</code>.</p>
+</div><h4 id='method.tree_to_index' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.tree_to_index' class='fnname'>tree_to_index</a>(repo: &amp;<a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, old_tree: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../git2/struct.Tree.html' title='git2::Tree'>Tree</a>&gt;, index: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../git2/struct.Index.html' title='git2::Index'>Index</a>&gt;, opts: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;mut <a class='struct' href='../git2/struct.DiffOptions.html' title='git2::DiffOptions'>DiffOptions</a>&gt;) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Create a diff between a tree and repository index.</p>
+
+<p>This is equivalent to <code>git diff --cached &lt;treeish&gt;</code> or if you pass
+the HEAD tree, then like <code>git diff --cached</code>.</p>
+
+<p>The tree you pass will be used for the &quot;old_file&quot; side of the delta, and
+the index will be used for the &quot;new_file&quot; side of the delta.</p>
+
+<p>If you pass <code>None</code> for the index, then the existing index of the <code>repo</code>
+will be used.  In this case, the index will be refreshed from disk
+(if it has changed) before the diff is generated.</p>
+
+<p>If the tree is <code>None</code>, then it is considered an empty tree.</p>
+</div><h4 id='method.index_to_workdir' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.index_to_workdir' class='fnname'>index_to_workdir</a>(repo: &amp;<a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, index: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../git2/struct.Index.html' title='git2::Index'>Index</a>&gt;, opts: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;mut <a class='struct' href='../git2/struct.DiffOptions.html' title='git2::DiffOptions'>DiffOptions</a>&gt;) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Create a diff between the repository index and the workdir directory.</p>
+
+<p>This matches the <code>git diff</code> command.  See the note below on
+<code>tree_to_workdir</code> for a discussion of the difference between
+<code>git diff</code> and <code>git diff HEAD</code> and how to emulate a <code>git diff &lt;treeish&gt;</code>
+using libgit2.</p>
+
+<p>The index will be used for the &quot;old_file&quot; side of the delta, and the
+working directory will be used for the &quot;new_file&quot; side of the delta.</p>
+
+<p>If you pass <code>None</code> for the index, then the existing index of the <code>repo</code>
+will be used.  In this case, the index will be refreshed from disk
+(if it has changed) before the diff is generated.</p>
+</div><h4 id='method.tree_to_workdir' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.tree_to_workdir' class='fnname'>tree_to_workdir</a>(repo: &amp;<a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, old_tree: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../git2/struct.Tree.html' title='git2::Tree'>Tree</a>&gt;, opts: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;mut <a class='struct' href='../git2/struct.DiffOptions.html' title='git2::DiffOptions'>DiffOptions</a>&gt;) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Create a diff between a tree and the working directory.</p>
+
+<p>The tree you provide will be used for the &quot;old_file&quot; side of the delta,
+and the working directory will be used for the &quot;new_file&quot; side.</p>
+
+<p>This is not the same as <code>git diff &lt;treeish&gt;</code> or <code>git diff-index
+&lt;treeish&gt;</code>.  Those commands use information from the index, whereas this
+function strictly returns the differences between the tree and the files
+in the working directory, regardless of the state of the index.  Use
+<code>tree_to_workdir_with_index</code> to emulate those commands.</p>
+
+<p>To see difference between this and <code>tree_to_workdir_with_index</code>,
+consider the example of a staged file deletion where the file has then
+been put back into the working dir and further modified.  The
+tree-to-workdir diff for that file is &#39;modified&#39;, but <code>git diff</code> would
+show status &#39;deleted&#39; since there is a staged delete.</p>
+
+<p>If <code>None</code> is passed for <code>tree</code>, then an empty tree is used.</p>
+</div><h4 id='method.tree_to_workdir_with_index' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.tree_to_workdir_with_index' class='fnname'>tree_to_workdir_with_index</a>(repo: &amp;<a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, old_tree: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../git2/struct.Tree.html' title='git2::Tree'>Tree</a>&gt;, opts: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;mut <a class='struct' href='../git2/struct.DiffOptions.html' title='git2::DiffOptions'>DiffOptions</a>&gt;) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Create a diff between a tree and the working directory using index data
+to account for staged deletes, tracked files, etc.</p>
+
+<p>This emulates <code>git diff &lt;tree&gt;</code> by diffing the tree to the index and
+the index to the working directory and blending the results into a
+single diff that includes staged deleted, etc.</p>
+</div><h4 id='method.from_raw' class='method'><a class='stability Unmarked' title='No stability level'></a><code>unsafe fn <a href='#method.from_raw' class='fnname'>from_raw</a>(raw: *mut <a class='enum' href='../libgit2-sys/enum.git_diff.html' title='libgit2-sys::git_diff'>git_diff</a>) -&gt; <a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a></code></h4>
+<div class='docblock'><p>Create a new diff from its raw component.</p>
+
+<p>This method is unsafe as there is no guarantee that <code>raw</code> is a valid
+pointer.</p>
+</div><h4 id='method.merge' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.merge' class='fnname'>merge</a>(&amp;mut self, from: &amp;<a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Merge one diff into another.</p>
+
+<p>This merges items from the &quot;from&quot; list into the &quot;self&quot; list.  The
+resulting diff will have all items that appear in either list.
+If an item appears in both lists, then it will be &quot;merged&quot; to appear
+as if the old version was from the &quot;onto&quot; list and the new version
+is from the &quot;from&quot; list (with the exception that if the item has a
+pending DELETE in the middle, then it will show as deleted).</p>
+</div><h4 id='method.deltas' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.deltas' class='fnname'>deltas</a>(&amp;self) -&gt; <a class='struct' href='../git2/struct.Deltas.html' title='git2::Deltas'>Deltas</a></code></h4>
+<div class='docblock'><p>Returns an iterator over the deltas in this diff.</p>
+</div><h4 id='method.get_delta' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get_delta' class='fnname'>get_delta</a>(&amp;self, i: <a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../git2/struct.DiffDelta.html' title='git2::DiffDelta'>DiffDelta</a>&gt;</code></h4>
+<div class='docblock'><p>Return the diff delta for an entry in the diff list.</p>
+</div><h4 id='method.is_sorted_icase' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.is_sorted_icase' class='fnname'>is_sorted_icase</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Check if deltas are sorted case sensitively or insensitively.</p>
+</div><h4 id='method.print' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.print' class='fnname'>print</a>&lt;F&gt;(&amp;self, format: <a class='enum' href='../git2/enum.DiffFormat.html' title='git2::DiffFormat'>DiffFormat</a>, cb: F) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt; where F: <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(<a class='struct' href='../git2/struct.DiffDelta.html' title='git2::DiffDelta'>DiffDelta</a>, <a class='struct' href='../git2/struct.DiffHunk.html' title='git2::DiffHunk'>DiffHunk</a>, <a class='struct' href='../git2/struct.DiffLine.html' title='git2::DiffLine'>DiffLine</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Iterate over a diff generating formatted text output.</p>
+
+<p>Returning <code>false</code> from the callback will terminate the iteration and
+return an error from this function.</p>
+</div><h4 id='method.stats' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.stats' class='fnname'>stats</a>(&amp;self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.DiffStats.html' title='git2::DiffStats'>DiffStats</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Accumulate diff statistics for all patches.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../git2/struct.Diff.html' title='git2::Diff'>Diff</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "git2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>
